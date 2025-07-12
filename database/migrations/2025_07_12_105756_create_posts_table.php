@@ -8,22 +8,22 @@ return new class extends Migration {
     /**
      * Run the migrations.
      */
-    public function up()
-    {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->text('content');
-            $table->timestamps(); // adds created_at and updated_at
-        });
-    }
+public function up()
+{
+    Schema::create('posts', function (Blueprint $table) {
+        $table->id();
+        $table->string('title');
+        $table->text('content');
+        $table->timestamps();
+    });
+}
 
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
-        Schema::dropIfExists('posts');
-    }
+public function down()
+{
+    Schema::dropIfExists('posts');
+}
 };

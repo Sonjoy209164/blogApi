@@ -1,41 +1,68 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Post;
+
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    // Create a post
-    public function store(Request $request)
+    /**
+     * Display a listing of the resource.
+     */
+    // List all posts
+    public function index()
     {
-        $validated = $request->validate([
+        $posts = Post::all();
+        return response()->json($posts);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+public function store(Request $request)
+    {
+        $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
         ]);
 
-        $post = Post::create($validated);
+        $post = Post::create([
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
+        ]);
 
         return response()->json($post, 201);
     }
 
-    // List all posts
-    public function index()
-    {
-        return response()->json(Post::all());
-    }
 
-    // View single post
+    /**
+     * Display the specified resource.
+     */
     public function show($id)
     {
         $post = Post::find($id);
 
         if (!$post) {
-            return response()->json(['error' => 'Post not found'], 404);
+            return response()->json(['message' => 'Post not found'], 404);
         }
 
         return response()->json($post);
     }
-}
 
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+}

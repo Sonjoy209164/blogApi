@@ -1,14 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Api;
-
+namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class TaskController extends Controller
 {
-    // Add a Task
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -23,7 +31,17 @@ class TaskController extends Controller
         return response()->json($task, 201);
     }
 
-    // Mark Task as Completed
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, $id)
     {
         $task = Task::findOrFail($id);
@@ -38,7 +56,15 @@ class TaskController extends Controller
         return response()->json($task);
     }
 
-    // Get Pending Tasks
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+
+        // Get Pending Tasks
     public function pending()
     {
         $tasks = Task::where('is_completed', false)->get();
