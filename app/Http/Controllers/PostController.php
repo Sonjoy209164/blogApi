@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post; // Ensure this line is included
 
 class PostController extends Controller
 {
@@ -35,4 +36,3 @@ class PostController extends Controller
         return response()->json($post);
     }
 }
-

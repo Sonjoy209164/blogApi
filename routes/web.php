@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
+Route::view('/api_test', 'api_test');  // Route for testing the API UI
+
+// Redirect root to the api_test page
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/api_test');  // Redirect to /api_test directly
 });
+

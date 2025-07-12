@@ -6,15 +6,18 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TaskController;
 
+// routes/api.php
 
 
-
-
-
+// Blog Post CRUD API
 Route::post('/posts', [PostController::class, 'create']);
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{id}', [PostController::class, 'show']);
+
+// User Registration API
 Route::post('/register', [AuthController::class, 'register']);
+
+// Task Management API
 Route::post('/tasks', [TaskController::class, 'create']);
 Route::patch('/tasks/{id}', [TaskController::class, 'complete']);
 Route::get('/tasks/pending', [TaskController::class, 'pending']);
